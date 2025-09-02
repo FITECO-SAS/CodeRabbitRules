@@ -7,18 +7,14 @@ reviews:
       instructions: |
         Review the JavaScript/TypeScript code and verify that it complies with the following naming conventions:
 
-        Boolean variables:
-        - Prefix boolean variables with "is", "are", "has", "must" or equivalent
+        Variables:
+        - Prefix boolean variables with "is", "has", "can", "should", or "will" to clearly indicate they return true/false values
         - Example: isActive, areUsersVisible, hasPermission, mustCreate
 
         Constants:
-        - File-specific constant: uppercase with underscores
+        - Global constants should be declared using 'const SNAKE_UPPERCASE = value;' syntax at the top of the file. Replace all magic values with direct references to these constants - do not create intermediate variables. 
         - Generic constants: use an ENUM
-
-        Use Case Naming:
-        - Use singular form
-        - File name should not end with "UseCase"
-        - Must be in a contextual folder in src/hexagone/use-cases
+        - No useless assignment
 
         Use Case:
         - All constructor parameters must be gateway interfaces, service interfaces, repository interfaces or configuration objects
@@ -153,8 +149,10 @@ reviews:
         - Use dependency injection to provide external library implementations
 
         Error Handling:
-        - Never throw errors outside /src/hexagone
-        - Errors other than "Error" must end with "Exception"
+        - Never throw outside /src/hexagone
+        - Errors other than native "Error" must end with "Exception"
+        - Native Errors can be throwed
+        - Error messages must be in French
 
         Testing:
         - All tests must be in the same folder as the code they are testing
@@ -175,8 +173,8 @@ reviews:
         - Integration tests must cover all code paths
 
         Comments:
-        - All functions / methods must be commented
-        - All function / method parameters must be commented
+        - All interface properties must be commented
+        - All interface method parameters must be commented
 
         Frontend Naming:
         - Use "handle" prefix for event listeners
